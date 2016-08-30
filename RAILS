@@ -1,0 +1,38 @@
+# install ruby on rails
+
+	REF: http://guides.rubyonrails.org/getting_started.html
+
+# install redis set up
+
+	Download redis stable from http://download.redis.io/redis-stable.tar.gz
+
+	$ redis-stable/utils > ./install_server.sh
+
+
+	REF : https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-redis-on-ubuntu-16-04
+
+# create mongoid.yml
+
+	rails g mongoid:config
+
+# create rails project
+
+	rails new my_project
+
+# start rails server
+
+	rails server
+
+# change environment
+
+	rails s -e production/development
+
+# install all packages in a project
+
+	bundle install
+
+	(bundler must be installed first)
+
+	gem install bundler
+
+	REF: http://bundler.io/
