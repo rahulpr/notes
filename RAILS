@@ -8,8 +8,10 @@
 
 	$ redis-stable/utils > ./install_server.sh
 
+	REF : 
 
-	REF : https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-redis-on-ubuntu-16-04
+	Ubuntu 16.04 : https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-redis-on-ubuntu-16-04
+	Ubuntu 14.04 : https://www.digitalocean.com/community/tutorials/how-to-configure-a-redis-cluster-on-ubuntu-14-04
 
 # create mongoid.yml
 
@@ -36,3 +38,43 @@
 	gem install bundler
 
 	REF: http://bundler.io/
+
+# create object of class
+	
+	self.new 
+
+
+ response =  PayTab.post('/verify_payment',data)
+    if response.parsed_response['response_code'] == "100"
+      Transaction.create_with_data response.parsed_response
+      true
+    else
+      false
+    end
+
+
+redis-cli flushall
+
+bundle exec cap production deploy:check --trace
+
+bundle exec cap production deploy:restart --trace
+
+cap deploy:restart
+
+# check version of ruby in Gemfile
+# check version of capistrano in /config/deploy.rb
+
+lock '3.6.1'
+
+check `cap -v` and both versions should be the same
+
+
+
+# setting SSH KEY in /config/deploy/production.rb
+
+set :ssh_options, {
+    keys: %w(/home/rahul/Documents/keys/serviceme), # my key file
+    forward_agent: true
+
+}
+
