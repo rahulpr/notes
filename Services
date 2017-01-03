@@ -1,0 +1,48 @@
+
+ Start these services for backend
+ --------------------------------
+
+
+	# mongodb start
+
+		mongod
+
+	# set mongo db path
+
+		mongod --dbpath /home/rahul/mongodb-data
+
+	# elastic search
+
+		- start
+
+			sudo service elasticsearch start
+
+		- check status
+
+			sudo service elasticsearch status
+
+		- stop
+
+			sudo service elasticsearch stop
+
+		- fully stopped
+
+			sudo systemctl start elasticsearch
+
+		- Re-Indexing
+
+			1) open rails folder
+			2) rails console
+			
+			Supplier.reindex
+			Category.reindex
+
+	# rails start
+
+		rails s
+
+	# May also need redis
+
+
+
+

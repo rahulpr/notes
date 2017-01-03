@@ -1,0 +1,48 @@
+
+
+git clone git@gitlab.com:aneeshrr/creative-chat.git
+
+
+	Permission denied (publickey).
+	fatal: Could not read from remote repository.
+
+	Please make sure you have the correct access rights
+	and the repository exists.
+
+
+Solution
+--------
+
+1) Add public key to git repository
+
+2) set corresponding private key
+
+exec ssh-agent bash
+
+ssh-add /home/rahul/Documents/keys/chat_keys/chat_key
+
+Identity added: /home/scott/.ssh/private-key-name (/home/scott/.ssh/private-key-name)
+
+
+
+Correct git order
+-----------------
+
+1) git pull (in all cases)
+
+2) if git suggest to stash, because of i'm working on the same files
+
+	git stash
+
+	git pull
+
+	git stash apply
+
+3) resolve conflicts if any
+
+4) git add {files}
+
+5) git commit -m 'message'
+
+6) git push -u origin master
+
