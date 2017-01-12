@@ -59,6 +59,8 @@
 
 redis-cli flushall
 
+bundle exec cap production deploy
+
 bundle exec cap production deploy:check --trace
 
 bundle exec cap production deploy:restart --trace

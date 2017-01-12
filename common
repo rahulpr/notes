@@ -102,6 +102,10 @@ DISK SPACE USED BY A FOLDER - disk usage
 du folder_name
 
 
+# change node ENV variable
+
+ export NODE_ENV=production
+
 
 
 

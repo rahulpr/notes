@@ -1,0 +1,125 @@
+================
+ AWS setting up 
+================
+
+1) Choose instance name : Web-instance
+2) Choose OS: Ubuntu 16.04
+3) Add storage  
+
+
+/dev/sda1
+8 Gib(default)  -> 16 Gib
+General purpose SSD(GP20
+Not encrypted
+
+4) Open nodejs running port(8050) in security policy
+
+custom policy - TCP - 8050
+
+5) redirect requests coming to 80 to 8050
+
+http://stackoverflow.com/questions/16573668/best-practices-when-running-node-js-with-port-80-ubuntu-linode
+
+
+Port 80
+-------
+
+What I do on my cloud instances is I redirect port 80 to port 3000 with this command:
+
+$ sudo iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 8050
+
+Then I launch my Node.js on port 3000. Requests to port 80 will get mapped to port 8050.
+
+You should also edit your /etc/rc.local file and add that line minus the sudo. That will add the redirect when the machine boots up. You don't need sudo in /etc/rc.local because the commands there are run as root when the system boots.
+
+
+Logs
+----
+Use the forever module to launch your Node.js with. It will make sure that it restarts if it ever crashes and it will redirect console logs to a file.
+
+
+Launch on Boot
+--------------
+
+Add your Node.js start script to the file you edited for port redirection, /etc/rc.local. That will run your Node.js launch script when the system starts.
+
+
+Digital Ocean & other VPS
+-------------------------
+
+This not only applies to Linode, but Digital Ocean, AWS EC2 and other VPS providers as well. However, on RedHat based systems /etc/rc.local is /ect/rc.d/local.
+
+
+
+--------------------
+ API
+--------------------
+
+
+https://www.digitalocean.com/community/tutorials/how-to-install-mongodb-on-ubuntu-16-04
+
+UFW firewall
+------------
+
+https://www.digitalocean.com/community/tutorials/how-to-setup-a-firewall-with-ufw-on-an-ubuntu-and-debian-cloud-server
+
+
+
+
+Ruby uninstall version
+----------------------
+
+rbenv uninstall 2.1.3
+
+
+Capistrano error
+----------------
+
+      01 Permission denied (publickey).
+      01 fatal: Could not read from remote repository.
+
+
+
+$ eval "$(ssh-agent -s)"
+
+$ ssh-add /home/rahul/Documents/keys/ServiceME_Web/serviceme_web
+
+
+http://robmclarty.com/blog/how-to-deploy-a-rails-4-app-with-git-and-capistrano
+
+
+REDIS
+-----
+
+https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-redis-on-ubuntu-16-04
+
+
+
+KILL process by port
+---------------------
+netstat -tulpn | grep :3000
+
+kill -9 pid
+
+or
+
+lsof -ti:3000 | xargs kill
+
+or 
+
+kill -9 $(lsof -i tcp:3000 -t)
+
+or 
+
+kill -9 $(cat tmp/pids/server.pid)
+
+or 
+
+rm -rf tmp/pids/server.pid  
+
+
+
+
+# tmp/pids/server.pid contains the pid of rails server process
+
+
