@@ -24,6 +24,12 @@ ssh-add /home/rahul/Documents/keys/chat_keys/chat_key
 Identity added: /home/scott/.ssh/private-key-name (/home/scott/.ssh/private-key-name)
 
 
+# list added ssh keys
+
+$ ssh-add -l
+
+
+
 
 Correct git order
 -----------------

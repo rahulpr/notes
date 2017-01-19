@@ -102,7 +102,13 @@ mongod --dbpath /home/rahul/mongodb-data
 
 http://www.wikihow.com/Install-Oracle-Java-on-Ubuntu-Linux
 
-#list added ssh keys
 
-ssh-add -l
+
+# rails gem version
+
+$ bundle show gem_name
+
+# GEM environment
+
+$ gem env
 
