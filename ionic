@@ -1,0 +1,51 @@
+Java
+
+android studio
+
+
+
+$ lsusb (to check ur device id)
+$ gedit  ~/.android/adb_usb.ini (put ur device id here)
+$ adb devices
+
+http://ionicframework.com/docs/guide/installation.html
+
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/tools
+
+If want it to make it permanent just add those lines in the ~/.bashrc file
+
+
+ionic install # install all ionic ibraries mentioned in the package.json
+
+ionic build android # create apk in /platforms/android/build/outputs/apk folder
+
+ionic run android # run in mobile
+
+ionic serve [-l] # iOS and Android together
+
+ionic serve android
+
+
+
+
+Error: The provided path "/media/rahul/LENOVO/Android/mobile/platforms/android" is not an Android project.
+-----------------------------------------------------------------------------------------------------------
+
+ cordova platform rm <platform>
+
+ cordova platform add <platform>
+
+ ionic run android
+
+
+
+# restore platforms(android/ios), install cordova plugins 
+
+ionic state restore
+
+# if version related error occures try changing platforms/android/project.properties 
+
+target=android-24 # to the latest version
+
+also check sdk manager is updated
